@@ -30,11 +30,13 @@ public class Controller {
     private void playGame() {
         while (true) {
             String moving = inputView.readMoving();
-//            BridgeGame.start();
+            BridgeGame.start();
             String gameCommand = inputView.readGameCommand();
             if (gameCommand.equals("Q")) {
                 break;
             }
+            BridgeGame.reset();
+            BridgeGame.incrementGameCounter();
         }
     }
 
