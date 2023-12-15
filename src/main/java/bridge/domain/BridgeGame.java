@@ -15,7 +15,7 @@ public class BridgeGame {
 
     public BridgeGame(List<String> bridge) {
         this.bridge = bridge;
-        gameCounter = 0;
+        gameCounter = 1;
         positon = 0;
         dead = false;
     }
@@ -55,8 +55,11 @@ public class BridgeGame {
      */
     public void retry() {
         positon = 0;
-        gameCounter = 0;
         dead = false;
         incrementGameCounter();
+    }
+
+    public BridgeGameDto toDto() {
+        return new BridgeGameDto(getMap(), gameCounter, isDead());
     }
 }

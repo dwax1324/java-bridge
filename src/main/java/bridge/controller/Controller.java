@@ -48,6 +48,7 @@ public class Controller {
         if (bridgeGame.isDead()) {
             String gameCommand = inputView.readGameCommand();
             if (gameCommand.equals("Q")) {
+                outputView.printResult(bridgeGame.toDto());
                 return true;
             }
             bridgeGame.retry();
@@ -56,8 +57,8 @@ public class Controller {
     }
 
     private boolean handleSuccess(List<String> bridge, BridgeGame bridgeGame) {
-        if (bridgeGame.getPosition() == bridge.size()) {
-            outputView.printResult();
+        if (bridgeGame.getPosition() == bridge.size() && !bridgeGame.isDead()) {
+            outputView.printResult(bridgeGame.toDto());
             return true;
         }
         return false;
